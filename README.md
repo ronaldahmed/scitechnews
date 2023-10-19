@@ -65,6 +65,18 @@ Number of instances in train/valid/test are 26,368/1431/1000.<br>
 Note that the training set has only press release data (`pr-*`), however
 splits validation and test do have all fields.
 
+### Data Statistics
+
+In the table below, the statistics of our dataset are separated by *non-aligned* and *aligned*.
+*Non-aligned* data means that the press release article could not be linked to a scientific article, whereas *aligned* means that a datum has both PR article/summary fields as well as scientific article information.
+
+|                         | Instances | #doc-words | #summ-words | #summ-sents |
+|-------------------------|------:|-----------:|-----:|
+| PR non-aligned         |   29069    | 612.56  | 205.93  | 6.74 |
+| PR aligned             | 2431 | 780.53  | 176.07  | 5.72 |
+| Sci. aligned             | 2431 | 7570.27  | 216.77  | 7.88 |
+
+
 ## Download
 
 1. HuggingFace Datasets
