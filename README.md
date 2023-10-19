@@ -18,6 +18,53 @@ press release article body, title, authors' names and affiliations.
 The science juornalism leaderboard is found [here]().
 
 
+
+## Dataset Structure
+
+
+### Data Fields
+
+```
+{
+	"id": String,          			 # unique ID
+	"pr-title": String,    		 	 # Title as found in the ACMTECHNEWS website
+	"pr-article": String,  			 # Press release article
+	"pr-summary": String,  		 	 # Press release summary
+	"sc-title": String,    		 	 # Title of scientific article
+	"sc-abstract": String, 		 	 # Abstract of scientific article
+	"sc-article": String,  			 # Concatenated abstract and sections of the scientific article
+	"sc-sections": List[String], 	 # List of sections in the scientific article
+	"sc-section_names": List[String] # List of section names
+	"sc-authors": List[String] 		 # list of authors' name and affiliations, in the format '<name> | <affil>'
+}
+```
+
+
+### Example Instance
+
+
+```
+{
+  "id": 37,
+  "pr-title": "What's in a Developer's Name?",
+  "pr-article": "In one of the most memorable speeches from William Shakespeare's play, Romeo and Juliet , Juliet ponders, \" What's in a name? That which...",
+  "pr-summary": ""Researchers at the University of Waterloo's Cheriton School of Computer Science in Canada found a software developer's perceived race and ethnicity,...",
+  "sc-title": On the Relationship Between the Developer's Perceptible Race and Ethnicity and the Evaluation of Contributions in OSS",
+  "sc-abstract": "Context: Open Source Software (OSS) projects are typically the result of collective efforts performed by developers with different backgrounds...",
+  "sc-articles": "Context: Open Source Software (OSS) projects are typically the result of .... In any line of work, diversity regarding race, gender, personality...",
+  "sc-sections": ["In any line of work, diversity regarding race, gender, personality...","To what extent is the submitter's perceptible race and ethnicity related to...",...],
+  "sc-section_names": ["INTRODUCTION", "RQ1:", "RQ2:", "RELATED WORK",...],
+  "sc-authors": ["Reza Nadri | Cheriton School of Computer Science, University of Waterloo", "Gema Rodriguez Perez | Cheriton School of ...",...]
+}
+```
+
+
+### Data Splits
+
+Number of instances in train/valid/test are 26,368/1431/1000.<br>
+Note that the training set has only press release data (`pr-*`), however
+splits validation and test do have all fields.
+
 ## Download
 
 1. HuggingFace Datasets
@@ -46,63 +93,18 @@ DatasetDict({
 
 ```
 
+Paragraphs in the press release articles (`pr-article`) and sections of the scientific article (`sc-sections`)
+are separated by `\n`. Data is not sentence or word tokenized.<br>
+Note that field `sc-article` includes the article's abstract as well as its sections.
 
 2. External links
 - [Untokenized](https://drive.google.com/file/d/1vjbrQKQHUmDFO-pzzvwzA42FayV2a5PL/view?usp=sharing)
 - [Tokenized](https://drive.google.com/file/d/1hILN6vWag9C9SPrDMWlqOgvd16KTWHt9/view?usp=sharing)
 
-Tokenization and sentence splitting was done using [spaCy](https://spacy.io/)
-
-
-## Dataset Structure
-
-
-### Data Fields
-
-```
-{
-	"id": String,          			 # unique ID
-	"pr-title": String,    		 	 # Title as found in the ACMTECHNEWS website
-	"pr-article": String,  			 # Press release article
-	"pr-summary": String,  		 	 # Press release summary
-	"sc-title": String,    		 	 # Title of scientific article
-	"sc-abstract": String, 		 	 # Abstract of scientific article
-	"sc-article": String,  			 # Concatenated abstract and sections of the scientific article
-	"sc-sections": List[String], 	 # List of sections in the scientific article
-	"sc-section_names": List[String] # List of section names
-	"sc-authors": List[String] 		 # list of authors' name and affiliations, in the format '<name> | <affil>'
-}
-```
-
+Tokenization and sentence splitting was done using [spaCy](https://spacy.io/).
 Paragraphs in the press release articles (`pr-article`) and sections of the scientific article (`sc-sections`)
-are separated by `\n`. Data is not sentence or word tokenized.<br>
-Note that field `sc-article` includes the article's abstract as well as its sections.
-
-
-### Example Instance
-
-
-```
-{
-  "id": 37,
-  "pr-title": "What's in a Developer's Name?",
-  "pr-article": "In one of the most memorable speeches from William Shakespeare's play, Romeo and Juliet , Juliet ponders, \" What's in a name? That which...",
-  "pr-summary": ""Researchers at the University of Waterloo's Cheriton School of Computer Science in Canada found a software developer's perceived race and ethnicity,...",
-  "sc-title": On the Relationship Between the Developer's Perceptible Race and Ethnicity and the Evaluation of Contributions in OSS",
-  "sc-abstract": "Context: Open Source Software (OSS) projects are typically the result of collective efforts performed by developers with different backgrounds...",
-  "sc-articles": "Context: Open Source Software (OSS) projects are typically the result of .... In any line of work, diversity regarding race, gender, personality...",
-  "sc-sections": ["In any line of work, diversity regarding race, gender, personality...","To what extent is the submitter's perceptible race and ethnicity related to...",...],
-  "sc-section_names": ["INTRODUCTION", "RQ1:", "RQ2:", "RELATED WORK",...],
-  "sc-authors": ["Reza Nadri | Cheriton School of Computer Science, University of Waterloo", "Gema Rodriguez Perez | Cheriton School of ...",...]
-}
-```
-
-
-### Data Splits
-
-Number of instances in train/valid/test are 26,368/1431/1000.<br>
-Note that the training set has only press release data (`pr-*`), however
-splits validation and test do have all fields.
+are separated by `\n\n`; sentences are separated by `\n`.
+Similarly to the untokenized version, field `sc-article` includes the article's abstract as well as its sections.
 
 
 ## Dataset Creation
