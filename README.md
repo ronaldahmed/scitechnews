@@ -70,11 +70,11 @@ splits validation and test do have all fields.
 In the table below, the statistics of our dataset are separated by *non-aligned* and *aligned*.
 *Non-aligned* data means that the press release article could not be linked to a scientific article, whereas *aligned* means that a datum has both PR article/summary fields as well as scientific article information.
 
-|                         | Instances | #doc-words | #summ-words | #summ-sents |
-|-------------------------|------:|-----------:|-----:|
+|                        | Instances | #doc-words | #summ-words | #summ-sents |
+|------------------------|----------:|-----------:|------------:|------------:|
 | PR non-aligned         |   29069    | 612.56  | 205.93  | 6.74 |
 | PR aligned             | 2431 | 780.53  | 176.07  | 5.72 |
-| Sci. aligned             | 2431 | 7570.27  | 216.77  | 7.88 |
+| Sci. aligned           | 2431 | 7570.27  | 216.77  | 7.88 |
 
 
 ## Download
