@@ -167,8 +167,34 @@ Field `pr_summary` contains the PR summary prepended by the oracle content plan.
 Please see the example below.
 
 <p align="middle">
-    <img src="img/input-plan-example.png" alt="Example of enriched source and target" width="400"/>
+    <img src="img/input-plan-example.png" alt="Example of enriched source and target" width="800"/>
 </p>
+
+### Training Models
+
+To train Bart-Plan, please take a look at script `scripts/train_bart-plan.sh`.
+
+
+### Inference
+
+#### Generating content plan and summary
+In order to run a pretrained model and generate the complete target (content plan + summary), run `scripts/predict_bart-plan.sh`.
+
+
+#### Generating a summary with a custom plan
+In order to generate a PR summary conditioned on a predetermined plan, run `gen_from_custom_plan.sh`.
+The generator reads a data file with fields `article` (same format as the preprocessed data above) and `plan`, which has only the content plan.
+See `data_custom_plan/valid-toy-plan.json` for a toy example.
+
+
+#### Postprocessing
+Running inference with Bart-plan generates a content plan immediately followed by a summary in the same string.
+We provide a post-processing script to separate plan and summary easily. Simply pass the output json file to the script:
+
+```
+python post_process_plan_preds.py -p "<prediction-json-file>"
+
+```
 
 
 ## Citation Information
