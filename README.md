@@ -51,7 +51,7 @@ The science juornalism leaderboard is found [here]().
   "pr-summary": ""Researchers at the University of Waterloo's Cheriton School of Computer Science in Canada found a software developer's perceived race and ethnicity,...",
   "sc-title": On the Relationship Between the Developer's Perceptible Race and Ethnicity and the Evaluation of Contributions in OSS",
   "sc-abstract": "Context: Open Source Software (OSS) projects are typically the result of collective efforts performed by developers with different backgrounds...",
-  "sc-articles": "Context: Open Source Software (OSS) projects are typically the result of .... In any line of work, diversity regarding race, gender, personality...",
+  "sc-article": "Context: Open Source Software (OSS) projects are typically the result of .... In any line of work, diversity regarding race, gender, personality...",
   "sc-sections": ["In any line of work, diversity regarding race, gender, personality...","To what extent is the submitter's perceptible race and ethnicity related to...",...],
   "sc-section_names": ["INTRODUCTION", "RQ1:", "RQ2:", "RELATED WORK",...],
   "sc-authors": ["Reza Nadri | Cheriton School of Computer Science, University of Waterloo", "Gema Rodriguez Perez | Cheriton School of ...",...]
@@ -121,20 +121,13 @@ Similarly to the untokenized version, field `sc-article` includes the article's 
 
 ## Dataset Creation
 
-### Curation Rationale
-
-*Science journalism* refers to producing journalistic content that covers topics related to different areas of scientific research. It plays an important role in fostering public understanding of science and its impact.
-However, the sheer volume of scientific literature makes it challenging for journalists to report on every significant discovery, potentially leaving many overlooked.<br>
-We construct a new open-access high-quality dataset for automatic science journalism that covers a wide range of scientific disciplines. 
-
-
 ### Source Data
 
 Press release snippets are mined from ACM TechNews and their respective scientific articles are mined from 
 reputed open-access journals and conference proceddings.
 
 
-#### Initial Data Collection and Normalization
+### Initial Data Collection and Normalization
 
 We collect archived TechNews snippets between 1999 and 2021 and link them with their respective press release articles. 
 Then, we parse each news article for links to the scientific article it reports about.
@@ -154,9 +147,7 @@ general challenges related to factuality and bias in machine-generated texts, an
 applications to exert caution and follow up-to-date ethical policies.  
 
 
-## Additional Information
-
-### Dataset Curators
+## Dataset Curators
 
 - Ronald Cardenas, University of Edinburgh
 - Bingsheng Yao, Rensselaer Polytechnic Institute
@@ -164,7 +155,25 @@ applications to exert caution and follow up-to-date ethical policies.
 - Yufang Hou, IBM Research Ireland
 
 
-### Citation Information
+## Reproducing Experiments in Paper
+
+### Preprocessed Data
+
+
+The preprocessed data our main model, Bart_plan, is available [here](https://drive.google.com/file/d/14U5g6l-Ex1NKvVTktQ2r-IiNemsiftRc/view?usp=sharing), as a json line format.
+Each datum contains two fields, `article` and `pr_summary`.<br>
+Field `article` is composed of the concatenated abstract and introduction of the scientific article, prepended with author metadata, and with each sentence prepended with its scientific rhetorical label (e.g. background, conclusion).<br>
+Field `pr_summary` contains the PR summary prepended by the oracle content plan.
+Please see the example below.
+
+<p align="middle">
+    <img src="img/input-plan-example.png" alt="Example of enriched source and target" width="400"/>
+</p>
+
+
+## Citation Information
+
+If our dataset or models are useful to you, please cite the following:
 
 Provide the [BibTex](http://www.bibtex.org/)-formatted reference for the dataset. For example:
 ```
