@@ -203,11 +203,13 @@ If our dataset or models are useful to you, please cite the following:
 
 Provide the [BibTex](http://www.bibtex.org/)-formatted reference for the dataset. For example:
 ```
-@article{article_id,
-  author    = {Author List},
-  title     = {Dataset Paper Title},
-  journal   = {Publication Venue},
-  year      = {2525}
+@article{cardenas2023dont,
+      title={'Don't Get Too Technical with Me': A Discourse Structure-Based Framework for Science Journalism}, 
+      author={Ronald Cardenas and Bingsheng Yao and Dakuo Wang and Yufang Hou},
+      year={2023},
+      eprint={2310.15077},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
 }
 ```
 
